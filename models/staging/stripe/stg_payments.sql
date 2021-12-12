@@ -4,7 +4,7 @@ with stg_payments as (
         orderid,
         paymentmethod,
         status,
-        amount
+        amount / 100 as amount
     from raw.stripe.payment
 )
 
