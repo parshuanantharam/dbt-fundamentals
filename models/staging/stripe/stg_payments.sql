@@ -5,7 +5,7 @@ with stg_payments as (
         paymentmethod,
         status,
         amount / 100 as amount
-    from raw.stripe.payment
+    from {{ source('stripe', 'payment') }}
 )
 
 select * from stg_payments
