@@ -2,20 +2,25 @@ version: 2
 
 models:
   - name: stg_customers
+    description: customers staging table
     columns: 
       - name: customer_id
+        description: primary key of customers table
         tests:
           - unique
           - not_null
 
   - name: stg_orders
+    description: order staging table
     columns:
       - name: order_id
+        description: primary key of orders table
       tests:
           - unique
           - not_null
 
       - name: status
+        description: '{{doc("order_status")}}'
         tests:
           - name: status
         tests:
@@ -28,6 +33,7 @@ models:
                 - placed
 
         -name: customer_id
+         description: customer id foreign key in order table
         tests:
           - relationships:
               to: ref('stg_customers')
